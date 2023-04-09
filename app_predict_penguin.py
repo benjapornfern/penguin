@@ -1,5 +1,3 @@
-
-
 import numpy as np
 import pandas as pd
 import pickle
@@ -36,4 +34,27 @@ with tab1:
     st.write('Predicted Species: ' , species_encoder.inverse_transform(pred)[0])
 
 with tab2:
-    st.write("test")
+    st.header("Evaluation")
+    evaluations=pickle.load(open('evals.all.sav','rb'))
+    
+    x = evaluations.columns
+    fig = px.Figure(data=[
+        px.Bar(name = 'Decision Tree',
+               x = x,
+               y = evaluations.loc['Decision Tress']),
+        px.Bar(name = 'Random Forest',
+               x = x,
+               y =  evaluations.loc['Random Forest']),
+        px.Bar(name = 'KNN',
+               x = x,
+               y =  evaluations.loc['KNN']),
+        px.Bar(name = 'AdaBoost',
+               x = x,
+               y =  evaluations.loc['AdaBoost']),
+        px.Bar(name = 'XGBoost',
+               x = x,
+               y =  evaluations.loc['XGBoost'])
+    ])
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.dataframe(evaluations)

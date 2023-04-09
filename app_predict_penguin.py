@@ -13,7 +13,7 @@ island_encoder = pickle.load(open('encoder.island.sav','rb'))
 sex_encoder = pickle.load(open('encoder.sex.sav','rb'))
 evaluations = pickle.load(open('evals.all.sav','rb'))
 
-tab1, tab2, tab3 = st.tabs(["Penguin Prediction", "Dog", "Owl"])
+tab1, tab2, tab3 = st.tabs(["Penguin Prediction", "chart", "Owl"])
 
 with tab1:
     st.title('Penguin Species Prection :) ')

@@ -4,6 +4,7 @@ import pickle
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 import streamlit as st 
+import plotly.graph_objects as px
 
 model = pickle.load(open('model.penguins.sav','rb'))
 species_encoder = pickle.load(open('encoder.species.sav','rb'))
@@ -35,7 +36,7 @@ with tab1:
 
 with tab2:
     st.header("Evaluation")
-    evaluations=pickle.load(open('evals.all.sav','rb'))
+    evaluations = pickle.load(open('evals.all.sav','rb'))
     
     x = evaluations.columns
     fig = px.Figure(data=[
